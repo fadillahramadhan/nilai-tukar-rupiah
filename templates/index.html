@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PREDIKSI KURS RUPIAH</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            background: #0f172a;
+            color: white;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 8px;
+            border: none;
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+        }
+        img {
+            margin-top: 20px;
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>💰 PREDIKSI KURS RUPIAH</h1>
+
+    <form action="/predict" method="post">
+        <input type="number" name="bulan" placeholder="Masukkan bulan ke-" required>
+        <button type="submit">Prediksi</button>
+    </form>
+
+    <h2>{{ hasil }}</h2>
+
+    {% if gambar %}
+        <img src="{{ url_for('static', filename=gambar) }}">
+    {% endif %}
+
+</body>
+</html>
