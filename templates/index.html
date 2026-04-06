@@ -2,43 +2,74 @@
 <html>
 <head>
     <title>PREDIKSI KURS RUPIAH</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         body {
-            font-family: 'Times New Roman', Times, serif;
-            text-align: center;
             background: #0f172a;
             color: white;
+            font-family: 'Poppins', sans-serif;
         }
-        input, button {
-            padding: 10px;
-            margin: 10px;
-            border-radius: 8px;
-            border: none;
+
+        .card {
+            background: #1e293b;
+            border-radius: 15px;
         }
-        button {
+
+        .btn-custom {
             background: #3b82f6;
             color: white;
         }
-        img {
-            margin-top: 20px;
-            width: 500px;
+
+        .btn-custom:hover {
+            background: #2563eb;
         }
     </style>
 </head>
+
 <body>
 
-    <h1>💰 PREDIKSI KURS RUPIAH</h1>
+<div class="container py-5">
 
-    <form action="/predict" method="post">
-        <input type="number" name="bulan" placeholder="Masukkan bulan ke-" required>
-        <button type="submit">Prediksi</button>
-    </form>
+    <h1 class="text-center mb-4">💰 Prediksi Kurs Rupiah</h1>
 
-    <h2>{{ hasil }}</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-12">
 
-    {% if gambar %}
-        <img src="{{ url_for('static', filename=gambar) }}">
-    {% endif %}
+            <div class="card p-4 shadow">
+
+                <form action="/predict" method="post">
+                    <input type="number" name="bulan" 
+                           class="form-control mb-3"
+                           placeholder="Masukkan bulan ke-" required>
+
+                    <button type="submit" class="btn btn-custom w-100">
+                        Prediksi
+                    </button>
+                </form>
+
+            </div>
+
+            {% if hasil %}
+            <div class="alert alert-success mt-3 text-center">
+                {{ hasil }}
+            </div>
+            {% endif %}
+
+            {% if gambar %}
+            <div class="text-center mt-3">
+                <img src="{{ url_for('static', filename=gambar) }}" 
+                     class="img-fluid rounded shadow">
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>
